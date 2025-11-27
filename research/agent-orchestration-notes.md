@@ -258,16 +258,3 @@ Final Shortlist Output
 
 ---
 
-## 10. Insights Provided
-
-The system reveals:
-
-- best-fit suppliers  
-- fastest-growing vendors  
-- supplier capability patterns  
-- compliance risks  
-- opportunities for negotiation  
-
-This demonstrates **innovation + technical leadership** in procurement automation — strong Global Talent evidence.
-
----
