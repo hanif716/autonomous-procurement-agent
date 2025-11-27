@@ -1,0 +1,49 @@
+flowchart LR
+    subgraph UserSide["User Side"]
+        USER["Procurement Manager"]
+        FE["React Frontend Interface"]
+    end
+
+    subgraph Backend["Backend API - FastAPI or Node"]
+        API["REST API Layer"]
+        ORCH["Agent Orchestrator"]
+        LOG["Run Logs and History Database"]
+    end
+
+    subgraph Agents["AI Agents"]
+        REQ["Requirement Interpreter"]
+        SEARCH["Supplier Search Agent"]
+        SCRAPE["Web Scraper Agent"]
+        EXTRACT["Information Extraction Agent"]
+        RANK["Supplier Ranking Agent"]
+    end
+
+    subgraph Data["AI and Data Services"]
+        LLM["LLM Provider"]
+        VDB["Vector Database"]
+        SUPPDB["Supplier Metadata Store"]
+    end
+
+    USER --> FE
+    FE --> API
+
+    API --> ORCH
+    ORCH --> REQ
+    ORCH --> SEARCH
+    ORCH --> SCRAPE
+    ORCH --> EXTRACT
+    ORCH --> RANK
+
+    REQ --> LLM
+    SEARCH --> LLM
+    SCRAPE --> LLM
+    EXTRACT --> LLM
+    RANK --> LLM
+
+    EXTRACT --> VDB
+    SEARCH --> SUPPDB
+    RANK --> SUPPDB
+
+    ORCH --> LOG
+    RANK --> API
+    API --> FE
