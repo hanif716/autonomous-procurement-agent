@@ -1,267 +1,273 @@
-Agent Orchestration – Technical Research Notes
+# Autonomous Procurement Agent – Technical Research Notes  
+**Project:** Autonomous Procurement Agent  
+**Author:** Hanif Hazrati  
 
-Project: Autonomous Procurement Agent
-Author: Hanif Hazrati
+---
 
-🧠 1. Overview of Multi-Agent AI Systems
+## 1. Purpose of the Autonomous Procurement Agent
 
-Multi-agent systems involve multiple specialised AI components (agents) that work together to perform a task that is too complex for a single LLM call.
+Procurement teams spend significant time:
 
-In procurement automation, this approach is useful because:
+- searching the web for suppliers  
+- manually reviewing supplier websites  
+- extracting product info  
+- checking compliance  
+- comparing vendors  
+- building shortlists  
 
-Supplier search
+These tasks are slow, repetitive, and inconsistent.
 
-Web scraping
+The Autonomous Procurement Agent aims to:
 
-Information extraction
+- ✔ Automate supplier discovery  
+- ✔ Automate website scraping  
+- ✔ Extract structured product data  
+- ✔ Evaluate vendors using scoring models  
+- ✔ Produce a ranked shortlist  
+- ✔ Reduce manual procurement workload  
 
-Risk/score analysis
+This project showcases innovation in procurement automation — incredibly relevant for UK Global Talent.
 
-Decision-making
+---
 
-are all different cognitive tasks, best handled by separate agents.
+## 2. Multi-Agent Architecture Overview
 
-This improves performance, accuracy, explainability, and traceability.
+The system uses multiple coordinated agents:
 
-🤖 2. Why Use Agent Orchestration in Procurement
+1. **Requirement Interpreter Agent**  
+   Parses user needs and converts them into structured specifications.
 
-Traditional procurement workflows are:
+2. **Supplier Search Agent**  
+   Performs semantic web search using APIs (Google, Bing, Tavily).
 
-Manual
+3. **Scraper Agent**  
+   Fetches and processes supplier websites using headless browsers.
 
-Time-consuming
+4. **Information Extraction Agent**  
+   Uses LLMs to extract product/service details into clean JSON.
 
-Error-prone
+5. **Ranking Agent**  
+   Scores vendors based on requirement fit, compliance, and capability.
 
-Non-standardised
+6. **Orchestrator Agent**  
+   Controls the workflow and manages agent-to-agent communication.
 
-Multi-agent AI automates these steps:
+### Architecture Summary Table
 
-Understanding the requirement
+| Agent                        | Purpose                                  |
+|-----------------------------|-------------------------------------------|
+| Requirement Interpreter     | Structure procurement needs               |
+| Supplier Search             | Find relevant vendors                     |
+| Scraper                     | Extract raw website content               |
+| Information Extraction      | Convert content → structured data         |
+| Ranking                     | Score suppliers                           |
+| Orchestrator                | Manage workflow + state                   |
 
-Finding suppliers
+---
 
-Scraping websites
+## 3. Requirement Interpreter — Technical Notes
 
-Extracting structured details
+This agent converts plain English requirements into structured variables.
 
-Ranking suppliers
+Example input:
 
-Producing a final recommendation
+> “We need a catering supplier in Manchester for 100 guests.”
 
-This system creates an automated “procurement assistant” that reduces work hours and improves quality.
+Structured output:
 
-🔀 3. Key Components of an Agent System
-3.1 Orchestrator
-
-The orchestrator coordinates the workflow:
-
-Routes tasks to specific agents
-
-Manages memory
-
-Tracks task failures
-
-Controls the sequence of actions
-
-Collects final outputs
-
-Framework options:
-
-CrewAI
-
-AutoGen
-
-LangGraph (LangChain)
-
-👤 3.2 Requirement Interpreter Agent
-
-Purpose:
-Convert a user requirement into a structured procurement query.
-
-Skills:
-
-NLP interpretation
-
-Constraint detection (budget, quantity)
-
-Category classification
-
-Data normalisation
-
-Example prompt snippet:
-
-“Extract user intent, category, budget, quantity, technical specifications, mandatory features…”
-
-🔍 3.3 Supplier Search Agent
-
-Purpose:
-Find suppliers online using search APIs or custom queries.
-
-Techniques:
-
-Web search APIs
-
-Google Custom Search
-
-Semantic search
-
-Keyword expansion
-
-Outputs:
-
-Supplier names
-
-Website URLs
-
-Contact info (if available)
-
-🌐 3.4 Web Scraper Agent
-
-Purpose:
-Scrape supplier websites for relevant products/services.
-
-Tools:
-
-Playwright
-
-Puppeteer
-
-BeautifulSoup
-
-Extracts:
-
-Product names
-
-Technical descriptions
-
-Pricing
-
-Lead time
-
-Compliance info
-
-🧾 3.5 Information Extraction Agent
-
-Purpose:
-Convert scraped HTML or text into structured JSON.
-
-Techniques:
-
-LLM text parsing
-
-Regular expressions
-
-Keyword detection
-
-Embedding-based similarity
-
-Outputs:
-
+<div style="background:#f6f8fa; padding:10px; border-radius:8px;">
+<pre>
 {
-  "product": "",
-  "specs": "",
-  "price": "",
-  "compliance": "",
-  "contact": "",
-  "url": ""
+  "category": "catering",
+  "location": "Manchester, UK",
+  "quantity": 100,
+  "requirements": ["event catering", "food", "service staff"]
 }
+</pre>
+</div>
 
-⭐ 3.6 Ranking and Scoring Agent
+Techniques:
 
-Purpose:
-Evaluate suppliers based on quality, price, compliance, and availability.
+- entity extraction  
+- semantic parsing  
+- normalisation rules  
+- template-based mapping  
 
-Ranking model can include:
+---
 
-Weighted scoring
+## 4. Supplier Search Agent — Technical Process
 
-Semantic evaluation
+The search agent:
 
-Cost comparison
+- expands keywords  
+- performs semantic search  
+- queries APIs  
+- filters irrelevant links  
+- produces ranked URLs  
 
-Risk and reliability indicators
+Example output:
 
-This agent produces final supplier recommendations.
+<div style="background:#f6f8fa; padding:10px; border-radius:8px;">
+<pre>
+[
+  {"url": "https://supplier1.com", "relevance": 0.92},
+  {"url": "https://supplier2.com", "relevance": 0.85}
+]
+</pre>
+</div>
 
-💾 4. Memory & Logging
+Uses:
 
-Every step logs:
+- Tavily API  
+- custom relevance scoring  
+- LLM-enhanced search term expansion  
 
-Agent inputs
+---
 
-Agent outputs
+## 5. Scraper Agent — Technical Notes
 
-Errors
+Responsibilities:
 
-LLM token usage
+- load pages using headless browser (Playwright/Puppeteer)  
+- handle dynamic JS pages  
+- scroll & wait for data  
+- extract visible text + metadata  
 
-Cost
+Example raw output:
 
-Execution time
+<div style="background:#f6f8fa; padding:10px; border-radius:8px;">
+<pre>
+{
+  "url": "https://supplier1.com",
+  "raw_text": "...",
+  "metadata": {"title": "Supplier 1"}
+}
+</pre>
+</div>
 
-This provides:
+---
 
-Traceability
+## 6. Information Extraction Agent
 
-Debugging capability
+This agent uses LLMs to extract structured information from raw text.
 
-Evidence for the final report
+Tasks include:
 
-Training dataset for optimisation
+- extracting products  
+- extracting pricing clues  
+- identifying certifications  
+- detecting company capability  
+- finding contact details  
 
-🧩 5. End-to-End Workflow
+Example structured output:
 
-User enters procurement requirement
+<div style="background:#f6f8fa; padding:10px; border-radius:8px;">
+<pre>
+{
+  "company": "Supplier 1",
+  "products": ["Infusion Pump", "ECG Machine"],
+  "certifications": ["ISO 9001"],
+  "contact_email": "info@supplier1.com"
+}
+</pre>
+</div>
 
-Orchestrator activates Requirement Interpreter Agent
+---
 
-Supplier Search Agent finds potential suppliers
+## 7. Vendor Ranking Engine — Scoring Logic
 
-Scraper Agent fetches website pages
+Factors:
 
-Extraction Agent parses structured data
+- requirement match  
+- product/capability fit  
+- geographic fit  
+- compliance signals  
+- credibility indicators  
 
-Ranking Agent evaluates suppliers
+Example pseudo-scoring algorithm:
 
-Backend returns JSON to frontend
+<div style="background:#f6f8fa; padding:10px; border-radius:8px;">
+<pre>
+score = (fit_score * 0.4) +
+        (compliance * 0.3) +
+        (credibility * 0.2) +
+        (location_match * 0.1)
+</pre>
+</div>
 
-Dashboard shows ranked list
+Outputs:
 
-🧠 6. Example Orchestrator Logic (Pseudocode)
-def run_procurement_pipeline(requirement):
-    interpreted = requirement_agent.run(requirement)
-    suppliers = search_agent.find(interpreted)
-    pages = scraper_agent.scrape(suppliers)
-    extracted = extraction_agent.process(pages)
-    ranked = ranking_agent.score(extracted, interpreted)
-    return ranked
+- ranked list  
+- justification text  
+- structured scoring breakdown  
 
-🔧 7. Technical Tools Used
-LLM Providers
+---
 
-OpenAI GPT-4.1
+## 8. Orchestrator Logic
 
-Anthropic Claude 3.5
+Controls:
 
-Agent Frameworks
+- workflow order  
+- state  
+- retries  
+- error handling  
+- passing data between agents  
 
-CrewAI
+Example orchestration flow:
 
-LangGraph
+<div style="background:#f6f8fa; padding:10px; border-radius:8px;">
+<pre>
+User Requirement
+    ↓
+Interpreter Agent
+    ↓
+Search Agent
+    ↓
+Scraper Agent
+    ↓
+Extraction Agent
+    ↓
+Ranking Agent
+    ↓
+Final Shortlist Output
+</pre>
+</div>
 
-AutoGen
+---
 
-Scraping
+## 9. Example End-to-End Output
 
-Playwright
+<div style="background:#f6f8fa; padding:10px; border-radius:8px;">
+<pre>
+{
+  "top_suppliers": [
+    {
+      "name": "Supplier A",
+      "score": 0.91,
+      "reason": "Strong match on category and compliance"
+    },
+    {
+      "name": "Supplier B",
+      "score": 0.84,
+      "reason": "Good capability but weaker documentation"
+    }
+  ]
+}
+</pre>
+</div>
 
-Puppeteer
+---
 
-Embedding Databases
+## 10. Insights Provided
 
-Supabase Vector DB
+The system reveals:
 
-Pinecone
+- best-fit suppliers  
+- fastest-growing vendors  
+- supplier capability patterns  
+- compliance risks  
+- opportunities for negotiation  
 
-Chroma
+This demonstrates **innovation + technical leadership** in procurement automation — strong Global Talent evidence.
+
+---
