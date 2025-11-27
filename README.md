@@ -126,19 +126,6 @@ Additional setup steps will be added as the backend evolves.
 - [ ] Docker  
 - [ ] Cloud hosting (Render / Vercel / GCP)  
 
----
-
-## 💡 Why This Project Matters (For Assessors)
-This project demonstrates:
-
-- **Innovation** (applying multi-agent AI to procurement)  
-- **Technical leadership** (architecture & planning)  
-- **Hands-on engineering** (code, documentation, research)  
-- **Domain expertise** (procurement + AI)  
-
-Supports:
-- **Mandatory Criterion:** Innovation  
-- **Optional Criterion:** Technical Contribution  
 
 ---
 
