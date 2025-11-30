@@ -1,0 +1,16 @@
+{
+  "company_name": "UK Medical Supplier Ltd",
+  "products": [
+    "Infusion Pumps",
+    "Syringe Pumps"
+  ],
+  "certifications": [
+    "ISO 13485",
+    "CE Marked"
+  ],
+  "location": "London, UK",
+  "contact_email": "sales@ukmedicalsupplier.co.uk",
+  "compliance_notes": [
+    "Company complies with EU MDR regulations"
+  ]
+}

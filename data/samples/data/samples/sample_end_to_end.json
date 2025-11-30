@@ -1,0 +1,38 @@
+{
+  "requirement": {
+    "category": "medical equipment",
+    "product": "infusion pump",
+    "location": "London, UK",
+    "quantity": 25
+  },
+  "search_results": [
+    {
+      "url": "https://www.ukmedicalsupplier.co.uk",
+      "relevance": 0.92
+    },
+    {
+      "url": "https://www.hospitaldevicesdirect.com",
+      "relevance": 0.87
+    }
+  ],
+  "extracted_suppliers": [
+    {
+      "company_name": "UK Medical Supplier Ltd",
+      "products": ["Infusion Pumps", "Syringe Pumps"],
+      "certifications": ["ISO 13485", "CE Marked"],
+      "location": "London, UK",
+      "score": 0.93
+    },
+    {
+      "company_name": "Hospital Devices Direct",
+      "products": ["Infusion Pumps"],
+      "certifications": ["CE Marked"],
+      "location": "UK",
+      "score": 0.84
+    }
+  ],
+  "final_recommendation": {
+    "selected_supplier": "UK Medical Supplier Ltd",
+    "confidence": 0.93
+  }
+}

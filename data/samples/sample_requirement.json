@@ -1,0 +1,7 @@
+{
+  "category": "medical equipment",
+  "location": "London, UK",
+  "product": "infusion pump",
+  "quantity": 25,
+  "required_certifications": ["ISO 13485", "CE Marked"]
+}

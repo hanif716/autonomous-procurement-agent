@@ -1,0 +1,15 @@
+{
+  "ranking_summary": "Top suppliers identified for infusion pumps in London.",
+  "top_suppliers": [
+    {
+      "name": "UK Medical Supplier Ltd",
+      "score": 0.93,
+      "fit_reasoning": "Fully certified, strong match to requirements, located in London."
+    },
+    {
+      "name": "Hospital Devices Direct",
+      "score": 0.84,
+      "fit_reasoning": "Strong product match but weaker compliance documentation."
+    }
+  ]
+}
