@@ -23,6 +23,19 @@ This project combines:
 - Vector search for supplier similarity  
 - API + React dashboard  
 
+## 🚀 Quick Start
+
+This guide helps you run the Autonomous Procurement Agent locally for development and testing.
+
+---
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/hanif716/autonomous-procurement-agent.git
+cd autonomous-procurement-agent
+
+
 ---
 
 ## 🛠️ Tech Stack
