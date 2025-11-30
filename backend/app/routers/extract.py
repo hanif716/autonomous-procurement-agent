@@ -1,16 +1,28 @@
 from fastapi import APIRouter
 from ..models.scrape import ScrapeInput
+from pathlib import Path
+import json
 
 router = APIRouter()
+
+DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "samples"
+
 
 @router.post("/")
 def extract_information(data: ScrapeInput):
     """
-    Placeholder endpoint for extraction agent.
-    Week 2 will integrate LLM-based extraction.
+    MVP logic:
+    - Loads sample_extracted_supplier.json
+    - Returns structured supplier data
     """
+
+    sample_file = DATA_DIR / "sample_extracted_supplier.json"
+
+    with open(sample_file, "r") as f:
+        sample_output = json.load(f)
+
     return {
-        "status": "ok",
-        "message": "Extraction agent placeholder",
-        "received_data": data.dict()
+        "status": "success",
+        "supplier_extracted": sample_output,
+        "source_url": data.url
     }
