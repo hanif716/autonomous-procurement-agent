@@ -14,127 +14,132 @@
 
 ## Overview
 
-The **Autonomous Procurement Agent** is an AI-driven, multi-agent system designed to automate:
+The **Autonomous Procurement Agent** is an AI-powered multi-agent system that automates:
 
 - Supplier discovery  
 - Website scraping  
 - Structured information extraction  
 - Supplier scoring and ranking  
 - Predictive comparison and similarity search  
-- Dashboard visualisation (React)  
+- Dashboard visualisation (React)
 
-This project combines:
+### Key Features
 
 - Multi-agent orchestration  
 - Web scraping & extraction  
 - LLM-powered analysis  
-- Vector search (FAISS/Chroma)  
-- FastAPI + React architecture  
+- Vector search (FAISS / Chroma)  
+- FastAPI backend + React frontend  
 
 ---
 
 ## 🚀 Quick Start
 
-This guide helps you run the Autonomous Procurement Agent **locally** for development and testing.
+Follow these steps to run the project locally.
 
 ---
 
-### 1️⃣ Clone the Repository
+### **1️⃣ Clone the Repository**
 
 ```bash
 git clone https://github.com/hanif716/autonomous-procurement-agent.git
 cd autonomous-procurement-agent
-2️⃣ Create a Virtual Environment
-bash
-Copy code
+```
+
+---
+
+### **2️⃣ Create a Virtual Environment**
+
+```bash
 python3 -m venv venv
-source venv/bin/activate      # macOS/Linux
+source venv/bin/activate      # macOS / Linux
 venv\Scripts\activate         # Windows
-3️⃣ Install Backend Dependencies
-bash
-Copy code
+```
+
+---
+
+### **3️⃣ Install Backend Dependencies**
+
+```bash
 pip install -r backend/app/requirements.txt
-4️⃣ Run the Backend (FastAPI)
-bash
-Copy code
+```
+
+---
+
+### **4️⃣ Run the Backend (FastAPI)**
+
+```bash
 uvicorn app.main:app --reload --app-dir backend/app
-Open the API docs:
+```
 
-👉 http://127.0.0.1:8000/docs
+Now open the API docs:
 
-You should see endpoints for:
+👉 **http://127.0.0.1:8000/docs**
 
-Supplier search
+You will see endpoints for:
 
-Extraction
+- Supplier search (`/search`)
+- Extraction (`/extract`)
+- Ranking (`/rank`)
+- Root health check (`/`)
 
-Ranking
+---
 
-Root health check
+## 🛠️ Tech Stack
 
-🛠️ Tech Stack
-Backend
-Python 3.10+
+### **Backend**
+- Python 3.10+
+- FastAPI
+- Pydantic
+- Uvicorn
+- LangChain tools
+- FAISS / Chroma vector DB
 
-FastAPI
+### **Frontend**
+- React  
+- TailwindCSS  
+- Recharts / Chart.js  
 
-Pydantic
+### **AI Components**
+- OpenAI models  
+- Embeddings (`text-embedding-3-large`)  
+- Tool-based agent workflows  
 
-Uvicorn
+---
 
-LangChain Tools
+## 🧱 Architecture
 
-FAISS / Chroma
+A full architecture diagram is included:
 
-Frontend
-React
+📄 `docs/architecture.png`
 
-TailwindCSS
+---
 
-Chart.js / Recharts
+## 🗺 Roadmap
 
-AI Components
-OpenAI models
+### **Phase 1 – Backend**
+- [ ] FastAPI skeleton  
+- [ ] Supplier scraping module  
+- [ ] Extraction agent  
+- [ ] Ranking model  
 
-Embedding models (text-embedding-3-large)
+### **Phase 2 – Agents**
+- [ ] Supervisor agent  
+- [ ] Search agent  
+- [ ] Extraction agent  
+- [ ] Ranking agent  
 
-Tool-based agent workflows
+### **Phase 3 – Frontend**
+- [ ] React UI  
+- [ ] Supplier dashboard  
+- [ ] Ranking analytics  
 
-🧱 Architecture
-A full system design diagram is available at:
+### **Phase 4 – Deployment**
+- [ ] Docker  
+- [ ] Cloud hosting (Render / Vercel / GCP)
 
-📄 docs/architecture.png
+---
 
-🗺 Roadmap
-Phase 1 – Backend
- FastAPI skeleton
+## 📄 License
 
- Supplier scraping module
-
- Extraction agent
-
- Ranking model
-
-Phase 2 – Agents
- Supervisor agent
-
- Search agent
-
- Extraction agent
-
- Ranking agent
-
-Phase 3 – Frontend
- React UI
-
- Supplier dashboard
-
- Ranking analytics
-
-Phase 4 – Deployment
- Docker
-
- Cloud hosting (Render / Vercel / GCP)
-
-📄 License
 MIT License.
