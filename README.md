@@ -1,4 +1,14 @@
 # Autonomous Procurement Agent
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/FastAPI-Framework-009688?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/AI-Agent%20Systems-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/OpenAI-API-blueviolet?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" />
+</p>
+
 *A multi-agent AI system for supplier discovery, website scraping, structured data extraction, and supplier ranking.*
 
 ---
