@@ -13,82 +13,128 @@
 ---
 
 ## Overview
-The Autonomous Procurement Agent is an AI-driven multi-agent system designed to automate supplier discovery, website scraping, structured information extraction, and supplier ranking.
+
+The **Autonomous Procurement Agent** is an AI-driven, multi-agent system designed to automate:
+
+- Supplier discovery  
+- Website scraping  
+- Structured information extraction  
+- Supplier scoring and ranking  
+- Predictive comparison and similarity search  
+- Dashboard visualisation (React)  
 
 This project combines:
+
 - Multi-agent orchestration  
-- Web scraping and data extraction  
+- Web scraping & extraction  
 - LLM-powered analysis  
-- Supplier scoring and ranking  
-- Vector search for supplier similarity  
-- API + React dashboard  
-
-## 🚀 Quick Start
-
-This guide helps you run the Autonomous Procurement Agent locally for development and testing.
+- Vector search (FAISS/Chroma)  
+- FastAPI + React architecture  
 
 ---
 
-## 1️⃣ Clone the Repository
+## 🚀 Quick Start
+
+This guide helps you run the Autonomous Procurement Agent **locally** for development and testing.
+
+---
+
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/hanif716/autonomous-procurement-agent.git
 cd autonomous-procurement-agent
+2️⃣ Create a Virtual Environment
+bash
+Copy code
+python3 -m venv venv
+source venv/bin/activate      # macOS/Linux
+venv\Scripts\activate         # Windows
+3️⃣ Install Backend Dependencies
+bash
+Copy code
+pip install -r backend/app/requirements.txt
+4️⃣ Run the Backend (FastAPI)
+bash
+Copy code
+uvicorn app.main:app --reload --app-dir backend/app
+Open the API docs:
 
+👉 http://127.0.0.1:8000/docs
 
----
+You should see endpoints for:
 
-## 🛠️ Tech Stack
+Supplier search
 
-### **Backend**
-- Python 3.10+
-- FastAPI  
-- Pydantic  
-- Uvicorn  
-- LangChain tools  
-- Vector DB (FAISS/Chroma)
+Extraction
 
-### **Frontend**
-- React  
-- TailwindCSS  
-- Recharts / Chart.js for analytics  
+Ranking
 
-### **AI Components**
-- OpenAI models  
-- Embeddings (text-embedding-3-large)  
-- Tool-based agent workflows  
+Root health check
 
----
+🛠️ Tech Stack
+Backend
+Python 3.10+
 
-## Architecture
-See `docs/architecture.png` for full system design.
+FastAPI
 
----
+Pydantic
 
-## Roadmap
+Uvicorn
 
-### **Phase 1 – Backend**
-- [ ] FastAPI skeleton  
-- [ ] Supplier scraping pipeline  
-- [ ] Extraction agent  
-- [ ] Scoring model  
+LangChain Tools
 
-### **Phase 2 – Agents**
-- [ ] Supervisor agent  
-- [ ] Search agent  
-- [ ] Extraction agent  
-- [ ] Ranking agent  
+FAISS / Chroma
 
-### **Phase 3 – Frontend**
-- [ ] React UI  
-- [ ] Supplier dashboard  
-- [ ] Ranking visualisation  
+Frontend
+React
 
-### **Phase 4 – Deployment**
-- [ ] Docker  
-- [ ] Cloud hosting  
+TailwindCSS
 
----
+Chart.js / Recharts
 
-## License
+AI Components
+OpenAI models
+
+Embedding models (text-embedding-3-large)
+
+Tool-based agent workflows
+
+🧱 Architecture
+A full system design diagram is available at:
+
+📄 docs/architecture.png
+
+🗺 Roadmap
+Phase 1 – Backend
+ FastAPI skeleton
+
+ Supplier scraping module
+
+ Extraction agent
+
+ Ranking model
+
+Phase 2 – Agents
+ Supervisor agent
+
+ Search agent
+
+ Extraction agent
+
+ Ranking agent
+
+Phase 3 – Frontend
+ React UI
+
+ Supplier dashboard
+
+ Ranking analytics
+
+Phase 4 – Deployment
+ Docker
+
+ Cloud hosting (Render / Vercel / GCP)
+
+📄 License
 MIT License.
